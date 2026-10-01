@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>team-blox | Blockchain Explorers & Tools</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: rgba(17, 24, 39, 0.7);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-hover-border: rgba(59, 130, 246, 0.4);
+      --card-hover-bg: rgba(23, 33, 53, 0.85);
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --accent: #3b82f6;
+      --accent-glow: rgba(59, 130, 246, 0.15);
+      --tag-cardano-bg: rgba(59, 130, 246, 0.15);
+      --tag-cardano: #60a5fa;
+      --tag-midnight-bg: rgba(168, 85, 247, 0.15);
+      --tag-midnight: #c084fc;
+      --tag-infra-bg: rgba(16, 185, 129, 0.15);
+      --tag-infra: #34d399;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    /* Ambient background glow */
+    .bg-glow-1 {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      top: -100px;
+      left: 10%;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .bg-glow-2 {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      top: 200px;
+      right: 5%;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+
+    header {
+      padding: 5rem 0 3.5rem;
+      text-align: center;
+    }
+
+    .badge-org {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 10px #10b981;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 3.75rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto 2rem;
+    }
+
+    .github-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #ffffff;
+      color: #0b0f19;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.65rem 1.4rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+    }
+
+    .github-btn:hover {
+      background: #e2e8f0;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(255, 255, 255, 0.18);
+    }
+
+    .github-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    /* Filter & Category Controls */
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 0.45rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .filter-btn.active {
+      background: rgba(59, 130, 246, 0.2);
+      border-color: rgba(59, 130, 246, 0.5);
+      color: #60a5fa;
+      font-weight: 500;
+    }
+
+    /* Projects Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 5rem;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      backdrop-filter: blur(12px);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .project-card:hover {
+      border-color: var(--card-hover-border);
+      background: var(--card-hover-bg);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .card-title-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .card-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+    }
+
+    .arrow-icon {
+      color: var(--text-muted);
+      opacity: 0.6;
+      transition: all 0.2s;
+    }
+
+    .project-card:hover .arrow-icon {
+      opacity: 1;
+      color: var(--accent);
+      transform: translate(2px, -2px);
+    }
+
+    .card-desc {
+      font-size: 0.925rem;
+      color: #94a3b8;
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      color: #94a3b8;
+    }
+
+    .tag.cardano {
+      background: var(--tag-cardano-bg);
+      color: var(--tag-cardano);
+    }
+
+    .tag.midnight {
+      background: var(--tag-midnight-bg);
+      color: var(--tag-midnight);
+    }
+
+    .tag.indexer {
+      background: var(--tag-infra-bg);
+      color: var(--tag-infra);
+    }
+
+    footer {
+      margin-top: auto;
+      border-top: 1px solid var(--card-border);
+      padding: 2.5rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    footer a {
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    footer a:hover {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-glow-1"></div>
+  <div class="bg-glow-2"></div>
+
+  <div class="container">
+    <header>
+      <div class="badge-org">
+        <span class="badge-dot"></span>
+        <span>github.com/team-blox</span>
+      </div>
+      <h1>team-blox</h1>
+      <p class="subtitle">
+        High-performance blockchain explorers, real-time indexers, and analytics tooling for the Cardano and Midnight networks.
+      </p>
+      <a href="https://github.com/team-blox" target="_blank" rel="noopener noreferrer" class="github-btn">
+        <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub Organization
+      </a>
+    </header>
+
+    <div class="controls">
+      <button class="filter-btn active" onclick="filterProjects('all')">All Projects</button>
+      <button class="filter-btn" onclick="filterProjects('cardano')">Cardano</button>
+      <button class="filter-btn" onclick="filterProjects('midnight')">Midnight</button>
+      <button class="filter-btn" onclick="filterProjects('indexer')">Indexers & Workers</button>
+    </div>
+
+    <div class="grid" id="projectGrid">
+      
+      <!-- adablox -->
+      <a href="https://github.com/team-blox/adablox" target="_blank" rel="noopener noreferrer" class="project-card" data-category="cardano">
+        <div class="card-header">
+          <div class="card-title-group">
+            <div class="card-icon">⚡</div>
+            <div class="card-title">adablox</div>
+          </div>
+          <svg class="arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </div>
+        <div class="card-desc">
+          Modern Cardano explorer & governance dashboard with SanchoNet/Voltaire support, live blocks, transaction metrics, and theme customization.
+        </div>
+        <div class="card-meta">
+          <span class="tag cardano">Cardano</span>
+          <span class="tag">React</span>
+          <span class="tag">Vite</span>
+          <span class="tag">Express</span>
+          <span class="tag">Redis</span>
+        </div>
+      </a>
+
+      <!-- adapools -->
+      <a href="https://github.com/team-blox/adapools" target="_blank" rel="noopener noreferrer" class="project-card" data-category="cardano">
+        <div class="card-header">
+          <div class="card-title-group">
+            <div class="card-icon">🏊‍♂️</div>
+            <div class="card-title">adapools</div>
+          </div>
+          <svg class="arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </div>
+        <div class="card-desc">
+          Dedicated Cardano stake pool explorer and ranking engine. Provides deep pool metrics, saturation tracking, ROA history, and delegation event timelines.
+        </div>
+        <div class="card-meta">
+          <span class="tag cardano">Cardano</span>
+          <span class="tag">React</span>
+          <span class="tag">MeshSDK</span>
+          <span class="tag">MongoDB</span>
+        </div>
+      </a>
+
+      <!-- bloxtools -->
+      <a href="https://github.com/team-blox/bloxtools" target="_blank" rel="noopener noreferrer" class="project-card" data-category="cardano">
+        <div class="card-header">
+          <div class="card-title-group">
+            <div class="card-icon">📊</div>
+            <div class="card-title">bloxtools</div>
+          </div>
+          <svg class="arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </div>
+        <div class="card-desc">
+          Fast Cardano DEX analytics and liquidity dashboard. Tracks token pairs, swap volumes, and liquidity pool metrics processed from indexer feeds.
+        </div>
+        <div class="card-meta">
+          <span class="tag cardano">Cardano</span>
+          <span class="tag">React</span>
+          <span class="tag">Express</span>
+          <span class="tag">MongoDB</span>
+        </div>
+      </a>
+
+      <!-- midnightblox -->
+      <a href="https://github.com/team-blox/midnightblox" target="_blank" rel="noopener noreferrer" class="project-card" data-category="midnight">
+        <div class="card-header">
+          <div class="card-title-group">
+            <div class="card-icon">🌙</div>
+            <div class="card-title">midnightblox</div>
+          </div>
+          <svg class="arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </div>
+        <div class="card-desc">
+          Self-hosted web explorer for the Midnight blockchain. Inspects blocks, extrinsics, and RPC node states while strictly maintaining cryptographic privacy standards.
+        </div>
+        <div class="card-meta">
+          <span class="tag midnight">Midnight</span>
+          <span class="tag">React</span>
+          <span class="tag">Express</span>
+          <span class="tag">PostgreSQL</span>
+        </div>
+      </a>
+
+      <!-- adablox-indexer -->
+      <a href="https://github.com/team-blox/adablox-indexer" target="_blank" rel="noopener noreferrer" class="project-card" data-category="indexer">
+        <div class="card-header">
+          <div class="card-title-group">
+            <div class="card-icon">⚙️</div>
+            <div class="card-title">adablox-indexer</div>
+          </div>
+          <svg class="arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </div>
+        <div class="card-desc">
+          Ultra-efficient native Rust ChainSync engine. Reads directly from the local cardano-node socket, handling roll-forwards, roll-backs, and atomic MongoDB state saves.
+        </div>
+        <div class="card-meta">
+          <span class="tag indexer">Indexer</span>
+          <span class="tag">Rust</span>
+          <span class="tag">Ouroboros</span>
+          <span class="tag">MongoDB</span>
+        </div>
+      </a>
+
+      <!-- adablox-workers -->
+      <a href="https://github.com/team-blox/adablox-workers" target="_blank" rel="noopener noreferrer" class="project-card" data-category="indexer">
+        <div class="card-header">
+          <div class="card-title-group">
+            <div class="card-icon">🔄</div>
+            <div class="card-title">adablox-workers</div>
+          </div>
+          <svg class="arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </div>
+        <div class="card-desc">
+          Robust BullMQ job processing and cron scheduler pipeline. Updates token metadata, pool historical timelines, market volume aggregations, and Adapools cache.
+        </div>
+        <div class="card-meta">
+          <span class="tag indexer">Worker</span>
+          <span class="tag">BullMQ</span>
+          <span class="tag">Redis</span>
+          <span class="tag">Node.js</span>
+        </div>
+      </a>
+
+      <!-- midnightblox-indexer -->
+      <a href="https://github.com/team-blox/midnightblox-indexer" target="_blank" rel="noopener noreferrer" class="project-card" data-category="midnight indexer">
+        <div class="card-header">
+          <div class="card-title-group">
+            <div class="card-icon">🦀</div>
+            <div class="card-title">midnightblox-indexer</div>
+          </div>
+          <svg class="arrow-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </div>
+        <div class="card-desc">
+          Rust-based real-time indexer connecting to Midnight RPC node. Synchronizes block headers, extrinsics, and network status directly into a dedicated Postgres DB.
+        </div>
+        <div class="card-meta">
+          <span class="tag midnight">Midnight</span>
+          <span class="tag indexer">Rust</span>
+          <span class="tag">SQLx</span>
+          <span class="tag">PostgreSQL</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 <a href="https://github.com/team-blox">team-blox</a>. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function filterProjects(cat) {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.toLowerCase().includes(cat) || (cat === 'all' && btn.textContent.includes('All')));
+      });
+
+      const cards = document.querySelectorAll('.project-card');
+      cards.forEach(card => {
+        const categories = card.getAttribute('data-category').split(' ');
+        if (cat === 'all' || categories.includes(cat)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
