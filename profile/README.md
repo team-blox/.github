@@ -4,7 +4,7 @@
 
 ### Blockchain Explorers & Analytics Infrastructure
 
-Empowering the **Cardano** and **Midnight** ecosystems with real-time, privacy-aware, and high-throughput blockchain tools.
+Independent, open-source explorers and data services for the **Cardano** and **Midnight** ecosystems.
 
 <br/>
 
@@ -26,7 +26,7 @@ Empowering the **Cardano** and **Midnight** ecosystems with real-time, privacy-a
       </p>
       <br/>
       <p align="center">
-        <code>React</code> • <code>Vite</code> • <code>MongoDB</code>
+        <code>Pool Metrics</code> • <code>Saturation</code> • <code>ROA History</code> • <code>Delegation</code>
       </p>
       <br/>
       <a href="https://adapools.xyz">
@@ -44,7 +44,7 @@ Empowering the **Cardano** and **Midnight** ecosystems with real-time, privacy-a
       </p>
       <br/>
       <p align="center">
-        <code>React</code> • <code>Ant Design</code> • <code>Redis</code>
+        <code>Blocks & Txs</code> • <code>Governance</code> • <code>DReps</code> • <code>Native Assets</code>
       </p>
       <br/>
       <a href="https://adablox.com">
@@ -55,14 +55,14 @@ Empowering the **Cardano** and **Midnight** ecosystems with real-time, privacy-a
     <!-- MIDNIGHTBLOX CARD -->
     <td width="33.33%" valign="top" align="center">
       <br/>
-      <img src="https://img.shields.io/badge/Midnight-Privacy-582c83?style=flat-square" alt="Midnight" />
+      <img src="https://img.shields.io/badge/Midnight-Network-582c83?style=flat-square" alt="Midnight" />
       <h3>midnightblox</h3>
       <p align="center">
-        Privacy-aware blockchain explorer for Midnight. Deep visibility into network health, blocks, and RPC extrinsics with strict data safety.
+        Dedicated block explorer for the Midnight blockchain with support for blocks, extrinsics, and network status inspection.
       </p>
       <br/>
       <p align="center">
-        <code>React</code> • <code>Express</code> • <code>PostgreSQL</code>
+        <code>Chain Status</code> • <code>Extrinsics</code> • <code>Block Explorer</code> • <code>RPC Insights</code>
       </p>
       <br/>
       <a href="https://midnightblox.com">
@@ -83,13 +83,13 @@ Empowering the **Cardano** and **Midnight** ecosystems with real-time, privacy-a
 * **Stack:** React, Vite, Ant Design, Express, MeshSDK wallet integration, MongoDB.
 
 #### ⚡ [adablox.com](https://adablox.com)
-* **Focus:** High-throughput Cardano blockchain explorer and Voltaire governance monitor.
+* **Focus:** Cardano blockchain explorer and Voltaire governance monitor.
 * **Key Features:** Real-time block and transaction feeds, address lookups, native asset analytics, and SanchoNet DRep / proposal tracking.
 * **Stack:** React, Vite, Tailwind CSS, Ant Design, Express, Redis cache.
 
 #### 🌙 [midnightblox.com](https://midnightblox.com)
-* **Focus:** Dedicated explorer for the Midnight privacy network.
-* **Key Features:** Chain monitoring, block explorer, and extrinsic inspections engineered to preserve cryptographic privacy guarantees.
+* **Focus:** Dedicated explorer for the Midnight network.
+* **Key Features:** Chain monitoring, block explorer, and extrinsic inspections for network activity.
 * **Stack:** React, Vite, Ant Design, Express, PostgreSQL.
 
 <br/>
@@ -97,5 +97,5 @@ Empowering the **Cardano** and **Midnight** ecosystems with real-time, privacy-a
 ---
 
 <div align="center">
-<sub>Built with precision by <strong>team-blox</strong> • Infrastructure & Explorers</sub>
+<sub>Built by <strong>team-blox</strong> • Infrastructure & Explorers</sub>
 </div>
