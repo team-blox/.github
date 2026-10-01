@@ -8,13 +8,6 @@ Empowering the **Cardano** and **Midnight** ecosystems with real-time, privacy-a
 
 <br/>
 
-[![Cardano Ecosystem](https://img.shields.io/badge/Network-Cardano-0033ad?style=for-the-badge&logo=cardano&logoColor=white)](https://adablox.com)
-[![Midnight Ecosystem](https://img.shields.io/badge/Network-Midnight-582c83?style=for-the-badge&logoColor=white)](https://midnightblox.com)
-[![Open Source](https://img.shields.io/badge/Open%20Source-team--blox-24292e?style=for-the-badge&logo=github&logoColor=white)](https://github.com/team-blox)
-
-<br/>
-<br/>
-
 </div>
 
 ---
@@ -82,27 +75,22 @@ Empowering the **Cardano** and **Midnight** ecosystems with real-time, privacy-a
 
 <br/>
 
-<details>
-<summary><b>🔍 Project Deep Dive & Technical Architecture</b></summary>
-
-<br/>
+### 🛠️ Architecture & Core Features
 
 #### 🏊‍♂️ [adapools.xyz](https://adapools.xyz)
-* **Focus:** Deep stake pool discovery, ranking, and delegation transparency.
+* **Focus:** Stake pool discovery, performance ranking, and delegation transparency.
 * **Key Features:** Live pool metrics, saturation alerts, pledge monitoring, lifetime minted block verification, and historical ROS/ROA computation.
-* **Architecture:** React frontend with Ant Design, powered by background workers aggregating on-chain metrics into MongoDB.
+* **Stack:** React, Vite, Ant Design, Express, MeshSDK wallet integration, MongoDB.
 
 #### ⚡ [adablox.com](https://adablox.com)
-* **Focus:** Fast, intuitive Cardano blockchain explorer & Voltaire governance tracker.
+* **Focus:** High-throughput Cardano blockchain explorer and Voltaire governance monitor.
 * **Key Features:** Real-time block and transaction feeds, address lookups, native asset analytics, and SanchoNet DRep / proposal tracking.
-* **Architecture:** React, Tailwind CSS, Ant Design, cached with high-speed Redis and powered by an automated indexing pipeline.
+* **Stack:** React, Vite, Tailwind CSS, Ant Design, Express, Redis cache.
 
 #### 🌙 [midnightblox.com](https://midnightblox.com)
-* **Focus:** Dedicated explorer for Midnight Network.
+* **Focus:** Dedicated explorer for the Midnight privacy network.
 * **Key Features:** Chain monitoring, block explorer, and extrinsic inspections engineered to preserve cryptographic privacy guarantees.
-* **Architecture:** React frontend backed by Express and a dedicated PostgreSQL database fed by a high-throughput Rust indexer.
-
-</details>
+* **Stack:** React, Vite, Ant Design, Express, PostgreSQL.
 
 <br/>
 
