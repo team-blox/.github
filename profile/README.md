@@ -75,7 +75,7 @@ Independent, open-source explorers and data services for the **Cardano** and **M
 
 <br/>
 
-### 🛠️ Architecture & Core Features
+### 🛠️ Tech & Core Features
 
 #### 🏊‍♂️ [adapools.xyz](https://adapools.xyz)
 * **Focus:** Stake pool discovery, performance ranking, and delegation transparency.
