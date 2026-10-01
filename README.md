@@ -8,21 +8,21 @@ Welcome to **team-blox**! We build blockchain explorers and analytics tooling fo
 
 | Project | Description | Stack |
 | :--- | :--- | :--- |
-| [**adablox**](https://github.com/team-blox/adablox) | Cardano blockchain explorer & governance dashboard | React, Vite, Ant Design, Express, Redis |
 | [**adapools**](https://github.com/team-blox/adapools) | Comprehensive Cardano stake pool explorer, ranking, and delegation metrics | React, Vite, Ant Design, Express, MongoDB |
+| [**adablox**](https://github.com/team-blox/adablox) | Cardano blockchain explorer & governance dashboard | React, Vite, Ant Design, Express, Redis |
 | [**midnightblox**](https://github.com/team-blox/midnightblox) | Dedicated privacy-aware explorer for the Midnight blockchain ecosystem | React, Vite, Ant Design, Express, PostgreSQL |
 
 ---
 
 ## 📦 Project Details
 
-### 🔹 [adablox](https://github.com/team-blox/adablox)
-* **What it does:** Full-featured Cardano mainnet explorer. Tracks blocks, transactions, smart contracts, stake addresses, tokens, and SanchoNet/Voltaire governance actions (DReps, proposals, votes).
-* **Stack:** React, Vite, Tailwind CSS, Ant Design, Node.js / Express, Redis.
-
 ### 🔹 [adapools](https://github.com/team-blox/adapools)
 * **What it does:** Dedicated stake pool directory & performance monitor. Analyzes pool saturation, pledge, historical ROS/ROA, lifetime minted blocks, and real-time delegation timeline events.
 * **Stack:** React, Ant Design, Express, MeshSDK wallet integration, MongoDB.
+
+### 🔹 [adablox](https://github.com/team-blox/adablox)
+* **What it does:** Full-featured Cardano mainnet explorer. Tracks blocks, transactions, smart contracts, stake addresses, tokens, and SanchoNet/Voltaire governance actions (DReps, proposals, votes).
+* **Stack:** React, Vite, Tailwind CSS, Ant Design, Node.js / Express, Redis.
 
 ### 🔹 [midnightblox](https://github.com/team-blox/midnightblox)
 * **What it does:** Self-hosted web explorer for the Midnight network. Explores blocks, transactions, and extrinsics while respecting privacy guarantees.
