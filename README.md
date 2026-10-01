@@ -8,7 +8,7 @@ Welcome to **team-blox**! We build blockchain explorers and analytics tooling fo
 
 | Project | Description | Stack |
 | :--- | :--- | :--- |
-| [**adablox**](https://github.com/team-blox/adablox) | Next-generation Cardano blockchain explorer & governance dashboard | React, Vite, Ant Design, Express, Redis |
+| [**adablox**](https://github.com/team-blox/adablox) | Cardano blockchain explorer & governance dashboard | React, Vite, Ant Design, Express, Redis |
 | [**adapools**](https://github.com/team-blox/adapools) | Comprehensive Cardano stake pool explorer, ranking, and delegation metrics | React, Vite, Ant Design, Express, MongoDB |
 | [**midnightblox**](https://github.com/team-blox/midnightblox) | Dedicated privacy-aware explorer for the Midnight blockchain ecosystem | React, Vite, Ant Design, Express, PostgreSQL |
 
