@@ -1,43 +1,16 @@
 # team-blox
 
-> Clean, robust blockchain explorers, data indexers, and analytics tooling for Cardano & Midnight ecosystems.
-
-Welcome to **team-blox**! We build high-performance, open-source infrastructure and real-time explorer services.
+Welcome to **team-blox**! We build blockchain explorers and analytics tooling for the Cardano and Midnight ecosystems.
 
 ---
 
-## 🚀 Projects Overview
+## 🚀 Projects
 
-| Project | Description | Stack | Status |
-| :--- | :--- | :--- | :--- |
-| [**adablox**](https://github.com/team-blox/adablox) | Next-generation Cardano blockchain explorer & governance dashboard | React, Vite, Ant Design, Express, Redis | ![Status](https://img.shields.io/badge/status-active-emerald?style=flat-square) |
-| [**adapools**](https://github.com/team-blox/adapools) | Comprehensive Cardano stake pool explorer, ranking, and delegation metrics | React, Vite, Ant Design, Express, MongoDB | ![Status](https://img.shields.io/badge/status-active-emerald?style=flat-square) |
-| [**bloxtools**](https://github.com/team-blox/bloxtools) | Fast DEX analytics, token tracking, and liquidity dashboards for Cardano | React, Vite, Ant Design, Express, MongoDB | ![Status](https://img.shields.io/badge/status-active-emerald?style=flat-square) |
-| [**adablox-indexer**](https://github.com/team-blox/adablox-indexer) | Ultra-fast Cardano ChainSync indexer reading directly from cardano-node socket | Rust, Ouroboros mini-protocols, MongoDB | ![Status](https://img.shields.io/badge/status-active-emerald?style=flat-square) |
-| [**adablox-workers**](https://github.com/team-blox/adablox-workers) | Distributed background workers & schedulers for token, pool, and market metrics | Node.js, BullMQ, Redis, PostgreSQL | ![Status](https://img.shields.io/badge/status-active-emerald?style=flat-square) |
-| [**midnightblox**](https://github.com/team-blox/midnightblox) | Dedicated privacy-aware explorer for the Midnight blockchain ecosystem | React, Vite, Ant Design, Express, PostgreSQL | ![Status](https://img.shields.io/badge/status-active-emerald?style=flat-square) |
-| [**midnightblox-indexer**](https://github.com/team-blox/midnightblox-indexer) | Real-time block & extrinsic indexer for the Midnight network | Rust, Substrate / RPC, PostgreSQL | ![Status](https://img.shields.io/badge/status-active-emerald?style=flat-square) |
-
----
-
-## 🛠️ Architecture & Core Components
-
-```
-                   ┌─────────────────────────────────────────┐
-                   │               team-blox                 │
-                   └────────────────────┬────────────────────┘
-                                        │
-           ┌────────────────────────────┴───────────────────────────┐
-           ▼                                                         ▼
-     Cardano Stack                                             Midnight Stack
-  ┌─────────────────────────────────┐                       ┌─────────────────────────────────┐
-  │ • adablox (Explorer)            │                       │ • midnightblox (Explorer)       │
-  │ • adapools (Pool Explorer)      │                       │ • midnightblox-indexer (Rust)   │
-  │ • bloxtools (DEX Analytics)     │                       └─────────────────────────────────┘
-  │ • adablox-indexer (Rust Engine) │
-  │ • adablox-workers (BullMQ Queue)│
-  └─────────────────────────────────┘
-```
+| Project | Description | Stack |
+| :--- | :--- | :--- |
+| [**adablox**](https://github.com/team-blox/adablox) | Next-generation Cardano blockchain explorer & governance dashboard | React, Vite, Ant Design, Express, Redis |
+| [**adapools**](https://github.com/team-blox/adapools) | Comprehensive Cardano stake pool explorer, ranking, and delegation metrics | React, Vite, Ant Design, Express, MongoDB |
+| [**midnightblox**](https://github.com/team-blox/midnightblox) | Dedicated privacy-aware explorer for the Midnight blockchain ecosystem | React, Vite, Ant Design, Express, PostgreSQL |
 
 ---
 
@@ -45,31 +18,15 @@ Welcome to **team-blox**! We build high-performance, open-source infrastructure 
 
 ### 🔹 [adablox](https://github.com/team-blox/adablox)
 * **What it does:** Full-featured Cardano mainnet explorer. Tracks blocks, transactions, smart contracts, stake addresses, tokens, and SanchoNet/Voltaire governance actions (DReps, proposals, votes).
-* **Stack:** React 19, Vite, Tailwind CSS, Ant Design, Node.js / Express, Redis cache.
+* **Stack:** React, Vite, Tailwind CSS, Ant Design, Node.js / Express, Redis.
 
 ### 🔹 [adapools](https://github.com/team-blox/adapools)
 * **What it does:** Dedicated stake pool directory & performance monitor. Analyzes pool saturation, pledge, historical ROS/ROA, lifetime minted blocks, and real-time delegation timeline events.
 * **Stack:** React, Ant Design, Express, MeshSDK wallet integration, MongoDB.
 
-### 🔹 [bloxtools](https://github.com/team-blox/bloxtools)
-* **What it does:** Real-time DEX insights, market liquidity monitor, and token pair tracker generated by the ChainSync indexing engine.
-* **Stack:** React, Express, MongoDB.
-
-### 🔹 [adablox-indexer](https://github.com/team-blox/adablox-indexer)
-* **What it does:** High-throughput native Rust indexer connecting directly to `cardano-node` via Unix domain socket using Ouroboros mini-protocols (ChainSync & BlockFetch). Checkpoints live slot state to MongoDB.
-* **Stack:** Rust, Tokio, Pallas, MongoDB.
-
-### 🔹 [adablox-workers](https://github.com/team-blox/adablox-workers)
-* **What it does:** Scalable queue workers and schedulers computing token metadata, pool historical timelines, market volume aggregations, and Adapools cache refreshes.
-* **Stack:** TypeScript / Node.js, BullMQ, Redis, PostgreSQL.
-
 ### 🔹 [midnightblox](https://github.com/team-blox/midnightblox)
 * **What it does:** Self-hosted web explorer for the Midnight network. Explores blocks, transactions, and extrinsics while respecting privacy guarantees.
 * **Stack:** React, Vite, Ant Design, Express, PostgreSQL.
-
-### 🔹 [midnightblox-indexer](https://github.com/team-blox/midnightblox-indexer)
-* **What it does:** Substrate / RPC chain indexer synchronizing Midnight blocks, extrinsics, and events directly into a clean relational database.
-* **Stack:** Rust, SQLx, PostgreSQL.
 
 ---
 
